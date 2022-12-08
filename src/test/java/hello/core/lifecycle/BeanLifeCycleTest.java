@@ -19,7 +19,7 @@ public class BeanLifeCycleTest {
 
     @Configuration
     static class LifeCycleConfig {
-        @Bean
+        @Bean(initMethod = "init", destroyMethod = "close")
         public NetworkClient networkClient() {
             NetworkClient networkClient = new NetworkClient();
             networkClient.setUrl("http://hello-spring.dev"); //객체 생성 후에 초기화 하게 됨=> 생성자 안의 로직들은 null인 채로 실행 되어 버림
